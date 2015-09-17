@@ -1,7 +1,9 @@
-package com.edus.apollo.funny;
+package com.edus.apollo.funny.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.edus.apollo.funny.R;
 
 public class MainActivity extends Activity {
 
