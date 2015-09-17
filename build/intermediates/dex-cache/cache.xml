@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="E:\dev\git_projects\FunnyImage\image\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\libs\internal_impl-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="8bd336eeae661e8311330284897ee07f8ebaa297">
+        <dex dex="E:\dev\git_projects\FunnyImage\image\build\intermediates\pre-dexed\debug\internal_impl-23.0.0-ef1df83c4292ea220b3adab6d9677943507aae59.jar" />
+    </item>
+    <item
+        jar="E:\dev\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.0\support-annotations-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
+        <dex dex="E:\dev\git_projects\FunnyImage\image\build\intermediates\pre-dexed\debug\support-annotations-23.0.0-7015fec2233e9b0c9c83f009098e9beb94656a54.jar" />
+    </item>
+    <item
+        jar="E:\dev\git_projects\FunnyImage\image\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="4fcf0b1879f8caf497c073e1432d398e9e2988c1">
+        <dex dex="E:\dev\git_projects\FunnyImage\image\build\intermediates\pre-dexed\debug\classes-2df45e0a87c46468023b2330a908728a30c061e0.jar" />
+    </item>
+    <item
+        jar="E:\dev\git_projects\FunnyImage\image\build\intermediates\exploded-aar\com.android.support\support-v4\23.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
+        <dex dex="E:\dev\git_projects\FunnyImage\image\build\intermediates\pre-dexed\debug\classes-030e4aad7c1c663666bb08022ae2891b5ac41ab0.jar" />
+    </item>
+
+</items>
