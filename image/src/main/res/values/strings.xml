@@ -3,4 +3,9 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="nav_doutu">斗图</string>
+    <string name="nav_fenlei">分类</string>
+    <string name="nav_zhitu">制图</string>
+    <string name="nav_guanzhu">关注</string>
+    <string name="nav_wode">我的</string>
 </resources>
