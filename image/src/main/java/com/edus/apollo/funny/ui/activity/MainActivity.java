@@ -1,4 +1,4 @@
-package com.edus.apollo.funny.ui;
+package com.edus.apollo.funny.ui.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
