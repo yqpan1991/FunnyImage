@@ -1,4 +1,4 @@
-package com.edus.apollo.funny.ui.View.flowlayout;
+package com.edus.apollo.funny.ui.view.flowlayout;
 
 import android.view.View;
 
