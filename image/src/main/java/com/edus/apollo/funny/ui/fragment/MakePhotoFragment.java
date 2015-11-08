@@ -69,7 +69,7 @@ public class MakePhotoFragment extends BaseFragment {
         UserApiHelper.getTemplateList(new Response.Listener<MakeModule>() {
             @Override
             public void onResponse(MakeModule makeModule) {
-                EsLog.e(TAG, "onActivityCreated" + JSON.toJSONString(makeModule));
+//                EsLog.e(TAG, "onActivityCreated" + JSON.toJSONString(makeModule));
                 mAdapter.setData(makeModule.templates);
             }
         }, new Response.ErrorListener() {

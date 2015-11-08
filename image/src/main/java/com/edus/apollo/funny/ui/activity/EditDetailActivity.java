@@ -71,6 +71,8 @@ public class EditDetailActivity extends BaseActivity implements View.OnClickList
 
     private ImageView mIvCombine;
 
+    private int mDownloadId = -1;
+
 
 
     @Override
@@ -265,7 +267,7 @@ public class EditDetailActivity extends BaseActivity implements View.OnClickList
 
                     }
                 });
-        int downloadId = downloadMgr.add(downloadRequest);
+        mDownloadId = downloadMgr.add(downloadRequest);
 
     }
 
@@ -297,7 +299,8 @@ public class EditDetailActivity extends BaseActivity implements View.OnClickList
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        EsApplication.getDownloadMgr().release();
+        EsApplication.getDownloadMgr().cancel(mDownloadId);
+
     }
 
     @Override

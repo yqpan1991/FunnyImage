@@ -35,4 +35,8 @@ public class EsApplication extends Application {
         }
         return mDownloadMgr;
     }
+
+    public static void destroy(){
+        mDownloadMgr.release();
+    }
 }

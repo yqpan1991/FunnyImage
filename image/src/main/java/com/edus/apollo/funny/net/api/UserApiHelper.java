@@ -50,7 +50,7 @@ public class UserApiHelper {
                 MakeModule makeModule = null;
                 try {
                     parsed = new String(networkResponse.data, HttpHeaderParser.parseCharset(networkResponse.headers));
-                    EsLog.e(TAG, "getTemplateList:" + parsed);
+//                    EsLog.e(TAG, "getTemplateList:" + parsed);
                     makeModule = JSON.parseObject(parsed,MakeModule.class);
                 } catch (UnsupportedEncodingException var4) {
                     parsed = new String(networkResponse.data);

@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.widget.RadioGroup;
 
 import com.edus.apollo.funny.R;
+import com.edus.apollo.funny.ui.EsApplication;
 import com.edus.apollo.funny.ui.fragment.BaseFragment;
 import com.edus.apollo.funny.ui.fragment.CategoryFragment;
 import com.edus.apollo.funny.ui.fragment.MakePhotoFragment;
@@ -154,5 +155,10 @@ public class MainActivity extends BaseFragmentActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EsApplication.destroy();
 
+    }
 }
