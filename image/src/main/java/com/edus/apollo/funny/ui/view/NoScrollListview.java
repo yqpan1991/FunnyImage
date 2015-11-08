@@ -1,4 +1,4 @@
-package com.edus.apollo.funny.ui.View;
+package com.edus.apollo.funny.ui.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
