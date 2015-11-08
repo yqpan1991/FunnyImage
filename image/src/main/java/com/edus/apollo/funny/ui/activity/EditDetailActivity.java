@@ -34,6 +34,7 @@ import com.edus.apollo.funny.net.model.MakeModule;
 import com.edus.apollo.funny.ui.EsApplication;
 import com.edus.apollo.funny.ui.adapter.EditDetailAdapter;
 import com.edus.apollo.funny.utils.EsFile;
+import com.edus.apollo.funny.utils.EsViewUtils;
 import com.thin.downloadmanager.DownloadRequest;
 import com.thin.downloadmanager.DownloadStatusListener;
 import com.thin.downloadmanager.ThinDownloadManager;
@@ -44,7 +45,7 @@ import java.util.Arrays;
 /**
  * Created by Panda on 2015/11/3.
  */
-public class EditDetailActivity extends BaseActivity {
+public class EditDetailActivity extends BaseActivity implements View.OnClickListener {
     private static final String EXTRA_TEMPLATE = "extra_template";
     private MakeModule.Template mTemplate;
 
@@ -68,6 +69,8 @@ public class EditDetailActivity extends BaseActivity {
 
     private Handler uiHandler;
 
+    private ImageView mIvCombine;
+
 
 
     @Override
@@ -83,6 +86,10 @@ public class EditDetailActivity extends BaseActivity {
         mRlDisplay = (RelativeLayout) findViewById(R.id.rl_display);
         mIvImage = (ImageView) findViewById(R.id.iv_image);
         mPbProgress = (ProgressBar) findViewById(R.id.pg_progress);
+        mIvCombine = (ImageView) findViewById(R.id.iv_combine);
+
+        mIvBack.setOnClickListener(this);
+        mTvShare.setOnClickListener(this);
         initData();
     }
 
@@ -283,9 +290,39 @@ public class EditDetailActivity extends BaseActivity {
 
     public static Intent getEditDetailIntent(Context context, MakeModule.Template template){
         Intent intent = new Intent(context,EditDetailActivity.class);
-        intent.putExtra(EXTRA_TEMPLATE,template);
+        intent.putExtra(EXTRA_TEMPLATE, template);
         return intent;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EsApplication.getDownloadMgr().release();
+    }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.iv_back:
+                onBackPressed();
+                break;
+            case R.id.tv_share:
+                handleTvShareClicked();
+                break;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(mIvCombine.getVisibility() == View.VISIBLE){
+            mIvCombine.setVisibility(View.GONE);
+        }else{
+            super.onBackPressed();
+        }
+    }
+
+    private void handleTvShareClicked() {
+        mIvCombine.setVisibility(View.VISIBLE);
+        mIvCombine.setImageBitmap(EsViewUtils.getViewCache(mRlDisplay));
+    }
 }
