@@ -1,8 +1,8 @@
 package com.edus.apollo.funny.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends BaseFragmentActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     public static final int INDEX_PK_FRAGMENT = 0;
@@ -51,6 +51,16 @@ public class MainActivity extends FragmentActivity {
         initData();
     }
 
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        processData(intent, true);
+    }
+
+    private void processData(Intent intent, boolean isNewIntent) {
+
+    }
 
     private void initView() {
         mNavBar = new NavigationBar(this, (RadioGroup) findViewById(R.id.rg_nav));
