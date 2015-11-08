@@ -1,2 +1,2 @@
-include ':image', ':imagelib'
+include ':image', ':imagelib', ':ThinDownloadManager'
 include ':PullToRefreshLibrary'
