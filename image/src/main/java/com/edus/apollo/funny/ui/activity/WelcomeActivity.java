@@ -34,6 +34,7 @@ public class WelcomeActivity extends BaseActivity {
 
     private void register(){
         String ticket = EsSharedPreference.getTicket();
+        EsLog.e(TAG,"TICKET:"+ticket);
         if(TextUtils.isEmpty(ticket)){
             UserApiHelper.registerUser(new Response.Listener<String>() {
                 @Override

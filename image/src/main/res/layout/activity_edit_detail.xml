@@ -53,6 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_above="@id/lv_text"
+        android:singleLine="true"
         android:hint="编辑文字" />
 
     <RelativeLayout
@@ -73,11 +74,12 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop" />
 
-            <TextView
+            <com.edus.apollo.funny.ui.view.AutoResizeTextView
                 android:id="@+id/tv_result"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textColor="@color/color_white"
+                android:textSize="200sp"
                 android:text="edit detail" />
 
         </RelativeLayout>

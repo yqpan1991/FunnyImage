@@ -11,6 +11,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -116,13 +119,32 @@ public class EditDetailActivity extends BaseActivity {
                 }
                 String item = mAdapter.getItem(adapterPosition);
                 mEtContent.setText(item);
-                mTvResult.setText(item);
             }
         });
-
+        mEtContent.addTextChangedListener(mTextWatcher);
         showDownloadingView();
         loadData();
     }
+
+    private TextWatcher mTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            if(TextUtils.isEmpty(s)){
+                s = mTemplate.text;
+            }
+            mTvResult.setText(s.toString());
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
 
     private void loadData() {
         String name = mTemplate.pic;
