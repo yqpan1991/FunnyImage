@@ -13,7 +13,7 @@ import com.edus.apollo.funny.net.EsDeviceType;
 import com.edus.apollo.funny.net.model.MakeModule;
 import com.edus.apollo.funny.ui.EsApplication;
 import com.edus.apollo.funny.utils.EsDeviceUtils;
-import com.edus.apollo.funny.utils.EsLogUtils;
+import com.edus.apollo.funny.utils.EsLog;
 import com.edus.apollo.funny.volley.VolleySingleton;
 
 import java.io.UnsupportedEncodingException;
@@ -50,7 +50,7 @@ public class UserApiHelper {
                 MakeModule makeModule = null;
                 try {
                     parsed = new String(networkResponse.data, HttpHeaderParser.parseCharset(networkResponse.headers));
-                    EsLogUtils.e(TAG,"getTemplateList:"+parsed);
+                    EsLog.e(TAG, "getTemplateList:" + parsed);
                     makeModule = JSON.parseObject(parsed,MakeModule.class);
                 } catch (UnsupportedEncodingException var4) {
                     parsed = new String(networkResponse.data);

@@ -11,7 +11,7 @@ import com.android.volley.VolleyError;
 import com.edus.apollo.funny.R;
 import com.edus.apollo.funny.net.model.RegisterResp;
 import com.edus.apollo.funny.net.api.UserApiHelper;
-import com.edus.apollo.funny.utils.EsLogUtils;
+import com.edus.apollo.funny.utils.EsLog;
 import com.edus.apollo.funny.utils.EsSharedPreference;
 
 /**
@@ -47,12 +47,12 @@ public class WelcomeActivity extends BaseActivity {
                         Toast.makeText(getApplicationContext(),registerResp.getErrorMsg(),Toast.LENGTH_SHORT).show();
                         finish();
                     }
-                    EsLogUtils.e("WelcomeActivity", s);
+                    EsLog.e("WelcomeActivity", s);
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError volleyError) {
-                    EsLogUtils.e("WelcomeActivity",volleyError.toString());
+                    EsLog.e("WelcomeActivity", volleyError.toString());
                     finish();
                 }
             });

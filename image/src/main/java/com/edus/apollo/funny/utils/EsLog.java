@@ -5,9 +5,9 @@ import android.util.Log;
 /**
  * Created by Panda on 2015/10/25.
  */
-public class EsLogUtils {
+public class EsLog {
 
-    private EsLogUtils(){
+    private EsLog(){
 
     }
 

@@ -14,10 +14,7 @@ import com.edus.apollo.funny.R;
 import com.edus.apollo.funny.model.ListGroup;
 import com.edus.apollo.funny.net.api.EsApi;
 import com.edus.apollo.funny.net.model.MakeModule;
-import com.edus.apollo.funny.utils.EsLogUtils;
 
-import java.math.MathContext;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

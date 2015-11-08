@@ -1,6 +1,5 @@
 package com.edus.apollo.funny.ui.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -19,7 +18,7 @@ import com.edus.apollo.funny.net.model.MakeModule;
 import com.edus.apollo.funny.ui.activity.EditDetailActivity;
 import com.edus.apollo.funny.ui.adapter.CommonItemClickListener;
 import com.edus.apollo.funny.ui.adapter.MakePhotoAdapter;
-import com.edus.apollo.funny.utils.EsLogUtils;
+import com.edus.apollo.funny.utils.EsLog;
 
 /**
  * Created by Panda on 2015/9/20.
@@ -70,7 +69,7 @@ public class MakePhotoFragment extends BaseFragment {
         UserApiHelper.getTemplateList(new Response.Listener<MakeModule>() {
             @Override
             public void onResponse(MakeModule makeModule) {
-                EsLogUtils.e(TAG, "onActivityCreated" + JSON.toJSONString(makeModule));
+                EsLog.e(TAG, "onActivityCreated" + JSON.toJSONString(makeModule));
                 mAdapter.setData(makeModule.templates);
             }
         }, new Response.ErrorListener() {
@@ -78,7 +77,7 @@ public class MakePhotoFragment extends BaseFragment {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 mAdapter.setData(null);
-                EsLogUtils.e(TAG, "make photo error:" + volleyError.toString());
+                EsLog.e(TAG, "make photo error:" + volleyError.toString());
 
             }
         });
