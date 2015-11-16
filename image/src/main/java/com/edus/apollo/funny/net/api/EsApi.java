@@ -8,6 +8,7 @@ public class EsApi {
     private static final String HOST = "http://mobile.bugua.com";
     public static final String REGISTER = "/sign_in";
     public static final String TEMPLATE = "/template";
+    public static final String CLASSIFY = "/template/cls";
 
     public static final String PIC_HOST = "http://pic.bugua.com";
 

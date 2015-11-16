@@ -16,4 +16,20 @@
     <style name="EsNormalImage">
         <item name="android:scaleType">fitCenter</item>
     </style>
+
+    <style name="EsClassifyImage">
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:padding">1dp</item>
+        <!--<item name="android:background">@color/color_black_alpha_10</item>-->
+    </style>
+
+    <style name="EsClassifyText">
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:textSize">@dimen/text_size_45</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_alignParentBottom">true</item>
+
+    </style>
 </resources>

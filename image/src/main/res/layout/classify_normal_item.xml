@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:orientation="horizontal"
+    android:paddingBottom="10dp">
+
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_1"
+            style="@style/EsClassifyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="text" />
+
+        <ImageView
+            android:id="@+id/iv_1"
+            style="@style/EsClassifyImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/tv_1" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="10dp"
+        android:layout_height="match_parent"
+        android:background="@color/color_white"
+        android:visibility="invisible" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_2"
+            style="@style/EsClassifyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="text" />
+
+        <ImageView
+            android:id="@+id/iv_2"
+            style="@style/EsClassifyImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/tv_2" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="10dp"
+        android:layout_height="match_parent"
+        android:background="@color/color_white"
+        android:visibility="invisible" />
+
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_3"
+            style="@style/EsClassifyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="text" />
+
+        <ImageView
+            android:id="@+id/iv_3"
+            style="@style/EsClassifyImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/tv_3" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="10dp"
+        android:layout_height="match_parent"
+        android:background="@color/color_white"
+        android:visibility="invisible" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_4"
+            style="@style/EsClassifyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="text" />
+
+        <ImageView
+            android:id="@+id/iv_4"
+            style="@style/EsClassifyImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/tv_4" />
+    </RelativeLayout>
+</LinearLayout>

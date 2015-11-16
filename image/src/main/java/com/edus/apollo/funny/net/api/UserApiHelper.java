@@ -10,6 +10,7 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.edus.apollo.funny.net.EsDeviceType;
+import com.edus.apollo.funny.net.model.ClassifyModule;
 import com.edus.apollo.funny.net.model.MakeModule;
 import com.edus.apollo.funny.ui.EsApplication;
 import com.edus.apollo.funny.utils.EsDeviceUtils;
@@ -43,7 +44,7 @@ public class UserApiHelper {
 
     public static void getTemplateList(Response.Listener<MakeModule> sucListener, Response.ErrorListener errListener){
 
-        JsonRequest<MakeModule> jsonRequest = new JsonRequest<MakeModule>(Request.Method.POST,EsApi.getFullUrl(EsApi.TEMPLATE),null,sucListener,errListener) {
+        JsonRequest<MakeModule> jsonRequest = new JsonRequest<MakeModule>(Request.Method.GET,EsApi.getFullUrl(EsApi.TEMPLATE),null,sucListener,errListener) {
             @Override
             protected Response<MakeModule> parseNetworkResponse(NetworkResponse networkResponse) {
                 String parsed;
@@ -66,6 +67,33 @@ public class UserApiHelper {
         };
         VolleySingleton.addRequest(EsApplication.getContext(),jsonRequest);
     }
+
+    public static void getClassifyList(Response.Listener<ClassifyModule> sucListener,Response.ErrorListener errListener){
+        JsonRequest<ClassifyModule> jsonRequest = new JsonRequest<ClassifyModule>(Request.Method.GET,EsApi.getFullUrl(EsApi.CLASSIFY),null,sucListener,errListener) {
+            @Override
+            protected Response<ClassifyModule> parseNetworkResponse(NetworkResponse networkResponse) {
+                String parsed;
+                ClassifyModule module;
+                try {
+                    parsed = new String(networkResponse.data, HttpHeaderParser.parseCharset(networkResponse.headers));
+//                    EsLog.e(TAG, "getTemplateList:" + parsed);
+                    module = JSON.parseObject(parsed,ClassifyModule.class);
+                } catch (UnsupportedEncodingException var4) {
+                    parsed = new String(networkResponse.data);
+                    module = JSON.parseObject(parsed,ClassifyModule.class);
+                }
+                return Response.success(module, HttpHeaderParser.parseCacheHeaders(networkResponse));
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                return EsNetUtils.getCommonHeader(EsApplication.getContext());
+            }
+        };
+        VolleySingleton.addRequest(EsApplication.getContext(),jsonRequest);
+    }
+
+
 
 
 

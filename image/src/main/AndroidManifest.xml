@@ -38,6 +38,9 @@
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
 
+        <activity android:name=".ui.activity.ClassifyActivity" />
+
+
     </application>
 
 </manifest>

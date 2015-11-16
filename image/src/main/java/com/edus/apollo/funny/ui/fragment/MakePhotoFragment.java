@@ -1,5 +1,6 @@
 package com.edus.apollo.funny.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.android.volley.Response;
@@ -15,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.edus.apollo.funny.R;
 import com.edus.apollo.funny.net.api.UserApiHelper;
 import com.edus.apollo.funny.net.model.MakeModule;
+import com.edus.apollo.funny.ui.activity.ClassifyActivity;
 import com.edus.apollo.funny.ui.activity.EditDetailActivity;
 import com.edus.apollo.funny.ui.adapter.CommonItemClickListener;
 import com.edus.apollo.funny.ui.adapter.MakePhotoAdapter;
@@ -55,7 +58,7 @@ public class MakePhotoFragment extends BaseFragment {
         getView().postDelayed(new Runnable() {
             @Override
             public void run() {
-                mSrlRefresh.setRefreshing(false);
+                fetchData();
             }
         }, 3000);
     }
@@ -66,19 +69,25 @@ public class MakePhotoFragment extends BaseFragment {
         mAdapter = new MakePhotoAdapter(getActivity());
         mAdapter.setItemClickListener(mClickListener);
         mLvList.setAdapter(mAdapter);
+        mSrlRefresh.setRefreshing(true);
+        fetchData();
+    }
+
+
+
+    private void fetchData(){
         UserApiHelper.getTemplateList(new Response.Listener<MakeModule>() {
             @Override
             public void onResponse(MakeModule makeModule) {
-//                EsLog.e(TAG, "onActivityCreated" + JSON.toJSONString(makeModule));
                 mAdapter.setData(makeModule.templates);
+                mSrlRefresh.setRefreshing(false);
             }
         }, new Response.ErrorListener() {
 
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                mAdapter.setData(null);
-                EsLog.e(TAG, "make photo error:" + volleyError.toString());
-
+                Toast.makeText(getActivity(), volleyError.toString(), Toast.LENGTH_SHORT).show();
+                mSrlRefresh.setRefreshing(false);
             }
         });
     }
@@ -125,7 +134,8 @@ public class MakePhotoFragment extends BaseFragment {
     }
 
     private void processCategoryClicked() {
-
+        Intent intent = new Intent(getActivity(), ClassifyActivity.class);
+        startActivity(intent);
     }
 
     private void processImageClicked(int adapterPosition, int index) {
