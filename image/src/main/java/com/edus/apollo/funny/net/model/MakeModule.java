@@ -23,9 +23,11 @@ public class MakeModule extends BaseResponse {
         @JSONField(name = "id")
         public int id;
 
+        /**是否是热门*/
         @JSONField(name = "is_hot")
         public boolean isHot;
 
+        /**使用次数*/
         @JSONField(name = "num")
         public int num;
 
@@ -41,6 +43,7 @@ public class MakeModule extends BaseResponse {
         @JSONField(name = "thumb")
         public String thumb;
 
+        /**服务器上更新的时间*/
         @JSONField(name = "time")
         public long time;
 

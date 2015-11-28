@@ -10,7 +10,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.edus.apollo.funny.R;
 import com.edus.apollo.funny.net.model.RegisterResp;
-import com.edus.apollo.funny.net.api.UserApiHelper;
+import com.edus.apollo.funny.net.api.EsUserApiHelper;
 import com.edus.apollo.funny.utils.EsLog;
 import com.edus.apollo.funny.utils.EsSharedPreference;
 
@@ -36,16 +36,16 @@ public class WelcomeActivity extends BaseActivity {
         String ticket = EsSharedPreference.getTicket();
         EsLog.e(TAG,"TICKET:"+ticket);
         if(TextUtils.isEmpty(ticket)){
-            UserApiHelper.registerUser(new Response.Listener<String>() {
+            EsUserApiHelper.registerUser(new Response.Listener<String>() {
                 @Override
                 public void onResponse(String s) {
                     RegisterResp registerResp = JSON.parseObject(s, RegisterResp.class);
-                    if(registerResp.isSuc()){
+                    if (registerResp.isSuc()) {
                         EsSharedPreference.setTicket(registerResp.ticket);
                         toMainActivity();
                         finish();
-                    }else{
-                        Toast.makeText(getApplicationContext(),registerResp.getErrorMsg(),Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), registerResp.getErrorMsg(), Toast.LENGTH_SHORT).show();
                         finish();
                     }
                     EsLog.e("WelcomeActivity", s);

@@ -11,17 +11,15 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.alibaba.fastjson.JSON;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.edus.apollo.funny.R;
-import com.edus.apollo.funny.net.api.UserApiHelper;
+import com.edus.apollo.funny.net.api.EsUserApiHelper;
 import com.edus.apollo.funny.net.model.MakeModule;
 import com.edus.apollo.funny.ui.activity.ClassifyActivity;
 import com.edus.apollo.funny.ui.activity.EditDetailActivity;
 import com.edus.apollo.funny.ui.adapter.CommonItemClickListener;
 import com.edus.apollo.funny.ui.adapter.MakePhotoAdapter;
-import com.edus.apollo.funny.utils.EsLog;
 
 /**
  * Created by Panda on 2015/9/20.
@@ -76,7 +74,7 @@ public class MakePhotoFragment extends BaseFragment {
 
 
     private void fetchData(){
-        UserApiHelper.getTemplateList(new Response.Listener<MakeModule>() {
+        EsUserApiHelper.getTemplateList(new Response.Listener<MakeModule>() {
             @Override
             public void onResponse(MakeModule makeModule) {
                 mAdapter.setData(makeModule.templates);

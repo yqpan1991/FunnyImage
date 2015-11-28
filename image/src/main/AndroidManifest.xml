@@ -39,6 +39,7 @@
 
 
         <activity android:name=".ui.activity.ClassifyActivity" />
+        <activity android:name=".ui.activity.ClassifyDetailActivity" />
 
 
     </application>

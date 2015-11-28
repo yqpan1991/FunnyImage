@@ -7,6 +7,34 @@
 
 
     <RelativeLayout
+        android:id="@+id/rl_0"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_0"
+            style="@style/EsClassifyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="text" />
+
+        <ImageView
+            android:id="@+id/iv_0"
+            style="@style/EsClassifyImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/tv_0" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="10dp"
+        android:layout_height="match_parent"
+        android:background="@color/color_white"
+        android:visibility="invisible" />
+
+    <RelativeLayout
+        android:id="@+id/rl_1"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1">
@@ -32,7 +60,9 @@
         android:background="@color/color_white"
         android:visibility="invisible" />
 
+
     <RelativeLayout
+        android:id="@+id/rl_2"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1">
@@ -58,8 +88,8 @@
         android:background="@color/color_white"
         android:visibility="invisible" />
 
-
     <RelativeLayout
+        android:id="@+id/rl_3"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1">
@@ -77,31 +107,5 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/tv_3" />
-    </RelativeLayout>
-
-    <View
-        android:layout_width="10dp"
-        android:layout_height="match_parent"
-        android:background="@color/color_white"
-        android:visibility="invisible" />
-
-    <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
-        <TextView
-            android:id="@+id/tv_4"
-            style="@style/EsClassifyText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="text" />
-
-        <ImageView
-            android:id="@+id/iv_4"
-            style="@style/EsClassifyImage"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@id/tv_4" />
     </RelativeLayout>
 </LinearLayout>

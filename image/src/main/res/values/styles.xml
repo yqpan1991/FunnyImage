@@ -24,12 +24,23 @@
     </style>
 
     <style name="EsClassifyText">
-        <item name="android:scaleType">fitCenter</item>
         <item name="android:paddingTop">5dp</item>
         <item name="android:paddingBottom">5dp</item>
         <item name="android:textSize">@dimen/text_size_45</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_alignParentBottom">true</item>
+
+    </style>
+
+    <style name="EsClassifyCategoryText">
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:textSize">@dimen/text_size_45</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/color_black_alpha_87</item>
+        <item name="android:background">@drawable/es_classify_detail_text_selector</item>
 
     </style>
 </resources>

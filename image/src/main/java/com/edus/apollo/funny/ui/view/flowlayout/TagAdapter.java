@@ -8,17 +8,24 @@ import java.util.List;
 
 public abstract class TagAdapter<T>
 {
-    private List<T> mTagDatas;
+    private List<T> mTagDatas = new ArrayList<>();
+
     private OnDataChangedListener mOnDataChangedListener;
 
-    public TagAdapter(List<T> datas)
+    public TagAdapter()
     {
-        mTagDatas = datas;
     }
 
-    public TagAdapter(T[] datas)
-    {
-        mTagDatas = new ArrayList<T>(Arrays.asList(datas));
+    public void setData(List<T> tagList){
+        mTagDatas.clear();
+        if(tagList != null && !tagList.isEmpty()){
+            mTagDatas.addAll(tagList);
+        }
+        notifyDataChanged();
+    }
+
+    public List<T> getTagList(){
+        return new ArrayList<>(mTagDatas);
     }
 
     static interface OnDataChangedListener

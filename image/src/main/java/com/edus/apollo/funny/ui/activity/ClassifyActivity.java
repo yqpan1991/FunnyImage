@@ -11,7 +11,7 @@ import com.alibaba.fastjson.JSON;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.edus.apollo.funny.R;
-import com.edus.apollo.funny.net.api.UserApiHelper;
+import com.edus.apollo.funny.net.api.EsUserApiHelper;
 import com.edus.apollo.funny.net.model.ClassifyModule;
 import com.edus.apollo.funny.ui.adapter.ClassifyAdapter;
 import com.edus.apollo.funny.utils.EsLog;
@@ -40,6 +40,7 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
         mSrlRefresh.setOnRefreshListener(mOnRefreshListener);
         mElvList = (ExpandableListView) findViewById(R.id.elv_list);
         mElvList.setOnGroupClickListener(mGroupClickListener);
+        mElvList.setOnChildClickListener(null);
         mIvBack.setOnClickListener(this);
     }
 
@@ -63,8 +64,26 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
         }
     };
 
+    private ClassifyAdapter.OnChildViewClickListener mOnChildViewClickListener = new ClassifyAdapter.OnChildViewClickListener() {
+        @Override
+        public void OnChildViewClick(View view, View rootView, int groupPosition, int childPosition, int subPosition) {
+            ClassifyModule.SingleItem[] singleItems = mAdapter.getChild(groupPosition, childPosition);
+            if(singleItems != null && singleItems.length > subPosition){
+                ClassifyModule.SingleItem item = singleItems[subPosition];
+                startClassifyDetail(item);
+            }
+        }
+    };
+
+    private void startClassifyDetail(ClassifyModule.SingleItem item) {
+//        EsLog.e(TAG, JSON.toJSONString(item));
+        startActivity(ClassifyDetailActivity.getClassifyDetailActivityIntent(this,item));
+    }
+
+
     private void initData() {
         mAdapter = new ClassifyAdapter(this);
+        mAdapter.setOnChildClickListener(mOnChildViewClickListener);
         mElvList.setAdapter(mAdapter);
         expandAllGroup();
         mSrlRefresh.setRefreshing(true);
@@ -72,12 +91,12 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void fetchData(){
-        UserApiHelper.getClassifyList(new Response.Listener<ClassifyModule>() {
+        EsUserApiHelper.getClassifyList(new Response.Listener<ClassifyModule>() {
             @Override
             public void onResponse(ClassifyModule classifyModule) {
                 EsLog.d(TAG, "onResponse:" + JSON.toJSONString(classifyModule));
-                if(!classifyModule.isSuc()){
-                    Toast.makeText(getApplicationContext(),"error:"+ classifyModule.getErrorMsg(),Toast.LENGTH_SHORT).show();
+                if (!classifyModule.isSuc()) {
+                    Toast.makeText(getApplicationContext(), "error:" + classifyModule.getErrorMsg(), Toast.LENGTH_SHORT).show();
                 }
                 mAdapter.setData(classifyModule.groupItemList);
                 expandAllGroup();
@@ -86,8 +105,8 @@ public class ClassifyActivity extends BaseActivity implements View.OnClickListen
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                EsLog.d(TAG,"onError:"+ volleyError.toString());
-                Toast.makeText(getApplicationContext(),"error:"+volleyError.toString(),Toast.LENGTH_SHORT).show();
+                EsLog.d(TAG, "onError:" + volleyError.toString());
+                Toast.makeText(getApplicationContext(), "error:" + volleyError.toString(), Toast.LENGTH_SHORT).show();
                 mSrlRefresh.setRefreshing(false);
             }
         });

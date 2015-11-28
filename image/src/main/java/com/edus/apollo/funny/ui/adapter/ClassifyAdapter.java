@@ -22,14 +22,16 @@ import java.util.List;
  */
 public class ClassifyAdapter extends BaseExpandableListAdapter {
 
+    public static final int VIEW_CLICK_TYPE_0 = 0;
+    public static final int VIEW_CLICK_TYPE_1 = 1;
+    public static final int VIEW_CLICK_TYPE_2 = 2;
+    public static final int VIEW_CLICK_TYPE_3 = 3;
+
     private Context mContext;
     private LayoutInflater mInflater;
-    private List<ClassifyModule.GroupItem> mDataList = new ArrayList<>();
+    private OnChildViewClickListener mListener;
 
-    public static final int VIEW_CLICK_TYPE_1 = 0;
-    public static final int VIEW_CLICK_TYPE_2 = 1;
-    public static final int VIEW_CLICK_TYPE_3 = 2;
-    public static final int VIEW_CLICK_TYPE_4 = 3;
+    private List<ClassifyModule.GroupItem> mDataList = new ArrayList<>();
 
 
     public ClassifyAdapter(Context context) {
@@ -45,6 +47,13 @@ public class ClassifyAdapter extends BaseExpandableListAdapter {
         notifyDataSetChanged();
     }
 
+    public void setOnChildClickListener(OnChildViewClickListener listener){
+        mListener = listener;
+    }
+
+    public interface OnChildViewClickListener{
+        void OnChildViewClick(View view, View rootView,int groupPosition,int childPosition,int subPosition);
+    }
 
     @Override
     public int getGroupCount() {
@@ -96,7 +105,7 @@ public class ClassifyAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+    public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         RowViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new RowViewHolder();
@@ -106,29 +115,45 @@ public class ClassifyAdapter extends BaseExpandableListAdapter {
             for (int index = 0; index < 4; index++) {
                 viewHolder.subViewHolders[index] = new SingleItemViewHolder();
             }
-            viewHolder.subViewHolders[0].ivImage = (ImageView) convertView.findViewById(R.id.iv_1);
-            viewHolder.subViewHolders[0].tvTitle = (TextView) convertView.findViewById(R.id.tv_1);
+            viewHolder.subViewHolders[0].rlLayout = convertView.findViewById(R.id.rl_0);
+            viewHolder.subViewHolders[0].ivImage = (ImageView) convertView.findViewById(R.id.iv_0);
+            viewHolder.subViewHolders[0].tvTitle = (TextView) convertView.findViewById(R.id.tv_0);
 
-            viewHolder.subViewHolders[1].ivImage = (ImageView) convertView.findViewById(R.id.iv_2);
-            viewHolder.subViewHolders[1].tvTitle = (TextView) convertView.findViewById(R.id.tv_2);
+            viewHolder.subViewHolders[1].rlLayout = convertView.findViewById(R.id.rl_1);
+            viewHolder.subViewHolders[1].ivImage = (ImageView) convertView.findViewById(R.id.iv_1);
+            viewHolder.subViewHolders[1].tvTitle = (TextView) convertView.findViewById(R.id.tv_1);
 
-            viewHolder.subViewHolders[2].ivImage = (ImageView) convertView.findViewById(R.id.iv_3);
-            viewHolder.subViewHolders[2].tvTitle = (TextView) convertView.findViewById(R.id.tv_3);
+            viewHolder.subViewHolders[2].rlLayout = convertView.findViewById(R.id.rl_2);
+            viewHolder.subViewHolders[2].ivImage = (ImageView) convertView.findViewById(R.id.iv_2);
+            viewHolder.subViewHolders[2].tvTitle = (TextView) convertView.findViewById(R.id.tv_2);
 
-            viewHolder.subViewHolders[3].ivImage = (ImageView) convertView.findViewById(R.id.iv_4);
-            viewHolder.subViewHolders[3].tvTitle = (TextView) convertView.findViewById(R.id.tv_4);
+            viewHolder.subViewHolders[3].rlLayout = convertView.findViewById(R.id.rl_3);
+            viewHolder.subViewHolders[3].ivImage = (ImageView) convertView.findViewById(R.id.iv_3);
+            viewHolder.subViewHolders[3].tvTitle = (TextView) convertView.findViewById(R.id.tv_3);
 
         }
         viewHolder = (RowViewHolder) convertView.getTag();
+        final View finalConvertView = convertView;
         ClassifyModule.SingleItem[] datas = getChild(groupPosition, childPosition);
         for (int index = 0; index < 4; index++) {
+            final int finalIndex = index;
             if(datas != null && datas.length > index){
                 viewHolder.subViewHolders[index].tvTitle.setText(datas[index].name);
-                loadImage(datas[index],viewHolder.subViewHolders[index].ivImage);
+                loadImage(datas[index], viewHolder.subViewHolders[index].ivImage);
+                viewHolder.subViewHolders[index].rlLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(mListener != null){
+                            mListener.OnChildViewClick(v, finalConvertView,childPosition,groupPosition, finalIndex);
+                        }
+                    }
+                });
             }else{
                 viewHolder.subViewHolders[index].tvTitle.setText(null);
                 viewHolder.subViewHolders[index].ivImage.setImageBitmap(null);
+                viewHolder.subViewHolders[index].rlLayout.setOnClickListener(null);
             }
+
         }
 
         return convertView;
@@ -149,6 +174,7 @@ public class ClassifyAdapter extends BaseExpandableListAdapter {
     }
 
     public static class SingleItemViewHolder {
+        public View rlLayout;
         public TextView tvTitle;
         public ImageView ivImage;
     }

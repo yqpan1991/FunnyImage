@@ -37,6 +37,6 @@ public class EsApplication extends Application {
     }
 
     public static void destroy(){
-        mDownloadMgr.release();
+        if(mDownloadMgr != null) mDownloadMgr.release();
     }
 }
